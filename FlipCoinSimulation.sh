@@ -1,9 +1,8 @@
 #!/bin/bash
-read -p "Enter the Number of Time Coin Flip: " number
 Heads=0
 Tails=0
-
-while [ $flips -le $number ]
+flips=0
+while [ $flips ]
 do
         RandomCheck=$(( RANDOM%2 ))
         if [ $RandomCheck -eq 1 ]
@@ -13,15 +12,25 @@ do
                 Tails=`expr $Tails + 1`
         fi
         flips=`expr $flips + 1`
+if [[ ($Heads -eq 21 ) || ($Tails -eq 21) ]]
+then
+        break;
+else
+        continue
+fi
 done
 
 if [ $Heads -gt $Tails ]
 then
         echo "Heads Won = $Heads"
+	echo "Heads Won by Tails="$(( $Heads - $Tails ))
 elif [ $Heads -eq $Tails ]
 then
         echo "Heads and Tails Both Won = $Heads"
+	echo "Heads and Tails Both Won ="$(( $Heads - $Tails ))
+
 else
         echo "Tails won = $Tails"
+	echo "Tails Won by Heads="$(( $Tails - $Heads ))
 fi
 
