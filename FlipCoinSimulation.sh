@@ -29,7 +29,7 @@ elif [ $Heads -eq $Tails ]
 then
         echo "Heads and Tails Both Won = $Heads"
 	echo "Heads and Tails Both Won ="$(( $Heads - $Tails ))
-	 while [ $flips ]
+	while [ $flips ]
         do
                 RandomCheck=$(( RANDOM%2 ))
                 if [ $RandomCheck -eq 1 ]
